@@ -1,7 +1,15 @@
-var http = require ('http')
+import * as http from 'http';
 
-http.createServer(function(req,res) {
-    res.write("welcome back srikanth")
-    res.end()
-}).listen(8080)
+const hostname: string = '127.0.0.1';
+const port: number = 5000;
+
+const server: http.Server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
